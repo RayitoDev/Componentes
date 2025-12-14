@@ -10,6 +10,7 @@ function TextfieldCheck({label, value, onChange, checked, onCheckChange, disable
 
   return (
     <TextField
+    fullWidth
       id="outlined-basic"
       label={label}
       variant="outlined"
