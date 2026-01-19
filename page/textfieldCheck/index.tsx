@@ -2,8 +2,10 @@
 import TextfieldCheck from "@/app/components/textFieldCheck";
 import { useState, useEffect } from "react";
 import { Box, Button, Grid } from "@mui/material";
+import CardComp from "@/app/components/card";
+import { CardHeader } from "@mui/material";
 
-export default function Home() {
+export default function TextfieldCheckVista() {
 const [nombreC, setNombreC] = useState("");
 const [apellidoPat, setApellidoPat] = useState("");
 const [apellidoMat, setApellidoMat] = useState("");
@@ -49,6 +51,24 @@ useEffect(() => {
 }, []); 
 
   return (
+    <CardComp
+    sx={{ maxWidth: 900, mx: "auto", mt: 4 }}
+    header={
+      <CardHeader
+        title="Validación de Contribuyente"
+        subheader="Verifica los datos antes de enviar"
+      />
+    }
+    actions={
+      <Button
+        onClick={handleClick}
+        fullWidth
+        variant="contained"
+      >
+        Enviar
+      </Button>
+    }
+  >
 <Grid container sx={{m:3}} spacing={2}>
     <Grid size={{md:4}} >
       <TextfieldCheck
@@ -80,19 +100,10 @@ useEffect(() => {
             onChange={handleChangeCampo}
             onCheckChange={setApellidoMatChecked}
             disabled={true}
-      />
-      </Grid >
-      <Grid size={{md:12}} >
-        <Button
-          onClick={handleClick}
-          fullWidth
-          variant="contained"
-        >
-          Enviar
-      </Button>
-      
+      />      
       </Grid>
 
     </Grid>
+    </CardComp>
   );
 }
