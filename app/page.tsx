@@ -1,11 +1,9 @@
 'use client';
 import TextfieldCheck from "@/app/components/textFieldCheck";
 import { useState, useEffect } from "react";
-import { Box, Button, Grid } from "@mui/material";
-import CardComp from "@/app/components/card";
-import { CardHeader } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
-export default function TextfieldCheckVista() {
+export default function Home() {
 const [nombreC, setNombreC] = useState("");
 const [apellidoPat, setApellidoPat] = useState("");
 const [apellidoMat, setApellidoMat] = useState("");
@@ -52,20 +50,6 @@ useEffect(() => {
 }, []); 
 
   return (
-    <CardComp
-    sx={{ maxWidth: 900, mx: "auto", mt: 4 }}
-    title="Validación de Contribuyente"
-    subheader="Verifica los datos antes de enviar"
-    actions={
-      <Button
-        onClick={handleClick}
-        fullWidth
-        variant="contained"
-      >
-        Enviar
-      </Button>
-    }
-  >
 <Grid container sx={{m:3}} spacing={2}>
     <Grid size={{md:4}} >
       <TextfieldCheck
@@ -80,27 +64,36 @@ useEffect(() => {
 
     <Grid size={{md:4}} >
       <TextfieldCheck
-      label="Apellido Paterno"
-          value={solicitud?.contribuyente.Apellido_Pat ?? ''}
-          checked={apellidoPatChecked}
-          onChange={handleChangeCampo}
-          onCheckChange={setApellidoPatChecked}
-          disabled={true}
+        label="Apellido Paterno"
+        value={solicitud?.contribuyente.Apellido_Pat ?? ''}
+        checked={apellidoPatChecked}
+        onChange={handleChangeCampo}
+        onCheckChange={setApellidoPatChecked}
+        disabled={true}
       />
       </Grid >
 
       <Grid size={{md:4}} >
         <TextfieldCheck
-        label="Apellido Paterno"
-            value={solicitud?.contribuyente.Apellido_Mat ?? ''}
-            checked={apellidoMatChecked}
-            onChange={handleChangeCampo}
-            onCheckChange={setApellidoMatChecked}
-            disabled={true}
-      />      
+          label="Apellido Paterno"
+          value={solicitud?.contribuyente.Apellido_Mat ?? ''}
+          checked={apellidoMatChecked}
+          onChange={handleChangeCampo}
+          onCheckChange={setApellidoMatChecked}
+          disabled={true}
+      />
+      </Grid >
+      <Grid size={{md:12}} >
+        <Button
+          onClick={handleClick}
+          fullWidth
+          variant="contained"
+        >
+          Enviar
+      </Button>
+      
       </Grid>
 
     </Grid>
-    </CardComp>
   );
 }
